@@ -1,7 +1,7 @@
 # Starlink-Statuspage-Clients
 Windows Clients to upload Starlink performance data to Starlinkstatus.space
 
-The developers of Starlink Statuspage, \Tysonpower and \puchol decribe it this way:
+The developers of Starlink Statuspage, \Tysonpower and \puchol, describe it this way:
 
 "Starlinkstatus.space is a Website that offers Statistics of Starlink Users around the World. All Data is Collected by Users that are interested in the Performance of Starlink....".
 
