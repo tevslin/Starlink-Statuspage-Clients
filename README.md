@@ -1,3 +1,7 @@
+WARNING   WARNING WARNING This repository is crrently a work in progress
+Its COcontents are unfinished an unstable and shpould bot be used on anyone's computer
+ENDWARNUNG
+
 # Starlink-Statuspage-Clients
 Windows Clients to upload Starlink performance data to Starlinkstatus.space
 
