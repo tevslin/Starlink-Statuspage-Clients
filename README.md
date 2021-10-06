@@ -1,5 +1,5 @@
-WARNING   WARNING WARNING This repository is currently a work in progress
-Its contents are unfinished and unstable and spould bot be used on anyone's computer
+WARNING   WARNING WARNING This repository is currently a work in progress.
+Its contents are unfinished and unstable and should NOT be used on anyone's computer
 ENDWARNUNG
 
 # Starlink-Statuspage-Clients
