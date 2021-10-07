@@ -1,4 +1,4 @@
 {
-	"API": "In order to contribute data to Starlink statuspage, you must register with the site. Returning your registration email gets an API Key to enter into this client. Click 'OK' to go the site.","speedtest":"Install is going to test speedtest. You may be asked to agree to the Ookla license agreement which you wil find in $starlinkfolder/speedtest.md. Clcik 'OK' to contrinue"
+	"API": "In order to contribute data to Starlink statuspage, you must register with the site. Returning your registration email gets an API Key to enter into this client. Click 'OK' to go the site.","speedtest":"Install is going to test speedtest. You may be asked to agree to the Ookla license agreement which you wil find in $starlinkfolder/speedtest.md. Click 'OK' to continue","motstarlink": "Your current ISP is $sf, not Starlink. Either change your interlink access to Starlink and click 'OK' or click 'Cancel' and run this install when you have Starlink available."
 
 }
