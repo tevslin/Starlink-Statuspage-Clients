@@ -48,7 +48,7 @@ Param(
 function SetUp-Folder{
     param([string]$FolderName)
     
-    if (Test_Path $FolderName = $true){
+    if ($(Test-Path $FolderName) -eq $true){
         "$FolderName already exists."
     }
     else{
@@ -232,7 +232,7 @@ $keyok=$false
 while ($keyok -eq $false){
     #Invoke-Expression "$Starlinkfolder/starlinkstatusstarter.ps1" #test the install
     starlinkstatusstarter.exe
-    $log=$(Get-Content $StarlinkFolder"/log.txt")
+    $log=$(Get-Content $StarlinkFolder"\log.txt")
     $ll=GetLastNBLine($log)
     $ll
     if ($ll -match "API Key OK"){
