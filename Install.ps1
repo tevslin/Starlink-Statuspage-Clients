@@ -1,4 +1,11 @@
-﻿function DownloadFilesFromRepo {
+﻿function DownloadFromRepo{
+    param(
+    [string]$file
+    )
+    $githubfolder="https://raw.githubusercontent.com/tevslin/Starlink-Statuspage-Clients/main"
+    Invoke-WebRequest -Uri $githubfolder/$file -OutFile $starlinkfolder\$file -ErrorAction Stop -Verbose
+}
+function DownloadFilesFromRepo {
 Param(
     [string]$Owner,
     [string]$Repository,
@@ -177,20 +184,29 @@ function GetLastNBLine{
     $lines[$curline]
 }
 
-#SetUpFolder #not needed at the moment
+
+
 Add-Type -AssemblyName System.Windows.Forms #get required builtins for dialog boxez
 Add-Type -AssemblyName System.Drawing
 $StarlinkFolder="C:\users\$env:USERNAME\documents\StarlinkScripts"
 
+Setupfolder $starlinkfolder
+
 $env:Path ="$StarlinkFolder;$env:Path"
+DownloadFromRepo message.json
+DownloadFromRepo StarlinkStatusClient.ps1
+DownloadFromRepo StarlinkStatusstarter.exe
+DownloadFromRepo ScheduleStarlinkStatus.exe
+DownloadfromRepo unscheduleStarlinkstatus.exe
 
 
-DownLoadFilesFromRepo "Tevslin" "Starlink-Statuspage-Clients" "" $StarlinkFolder
+
+#DownLoadFilesFromRepo "Tevslin" "Starlink-Statuspage-Clients" "" $StarlinkFolder
 $messages= $(Get-Content $StarlinkFolder"\messages.json"|Convertfrom-Json)
-unblock-file -path $Starlinkfolder\starlinkstatusstarter.ps1
-unblock-file -path $Starlinkfolder\schedulestarlinkstatus.ps1
+#unblock-file -path $Starlinkfolder\starlinkstatusstarter.ps1
+#unblock-file -path $Starlinkfolder\schedulestarlinkstatus.ps1
 unblock-file -path $Starlinkfolder\starlinkstatus_client.ps1
-unblock-file -path $Starlinkfolder\unschedulestarlinkstatus.ps1
+#unblock-file -path $Starlinkfolder\unschedulestarlinkstatus.ps1
 
 GetZippedExe  "https://install.speedtest.net/app/cli/ookla-speedtest-1.0.0-win64.zip"
 "testing speedtest..."
@@ -214,7 +230,8 @@ $key=GetStatusPageKey
 "testing Starlinkstatus client..."
 $keyok=$false
 while ($keyok -eq $false){
-    Invoke-Expression "$Starlinkfolder/starlinkstatusstarter.ps1" #test the install
+    #Invoke-Expression "$Starlinkfolder/starlinkstatusstarter.ps1" #test the install
+    starlinkstatusstarter.exe
     $log=$(Get-Content $StarlinkFolder"/log.txt")
     $ll=GetLastNBLine($log)
     $ll
@@ -235,7 +252,8 @@ while ($keyok -eq $false){
 }
 $msg=$messages.scheduling
 ShowTextDialog $(invoke-expression "echo $msg") "" "" -bigtext $true -infoonly $true
-Invoke-Expression "$Starlinkfolder/schedulestarlinkstatus.ps1"
+#$Invoke-Expression "$Starlinkfolder/schedulestarlinkstatus.ps1"
+schedulestarlinkstatus.exe
 ShowTextDialog "Install Succeeded!" "" "" -infoonly $true
     
 
