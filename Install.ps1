@@ -190,14 +190,14 @@ Add-Type -AssemblyName System.Windows.Forms #get required builtins for dialog bo
 Add-Type -AssemblyName System.Drawing
 $StarlinkFolder="C:\users\$env:USERNAME\documents\StarlinkScripts"
 
-Setupfolder $starlinkfolder
+Setup-folder $starlinkfolder
 
 $env:Path ="$StarlinkFolder;$env:Path"
 DownloadFromRepo messages.json
 DownloadFromRepo Starlinkstatus_client.ps1
-DownloadFromRepo StarlinkStatusStarter.exe
-DownloadFromRepo ScheduleStarlinkStatus.exe
-DownloadfromRepo UnscheduleStarlinkStatus.exe
+DownloadFromRepo starlinkstatusstarter.exe
+DownloadFromRepo schedulestarlinkstatus.exe
+DownloadfromRepo unschedulestarlinkstatus.exe
 
 
 
