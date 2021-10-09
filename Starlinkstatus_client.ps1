@@ -1,4 +1,7 @@
-﻿$VERSION = '0.6w'
+﻿$VERSION = '0.7w'
+$StarlinkFolder="C:\users\$env:USERNAME\documents\StarlinkScripts"
+$env:Path ="$StarlinkFolder;$env:Path"
+
 function myhelp 
 {
     "Usage: starlinkstatus.ps -k APIKEY"
@@ -52,7 +55,7 @@ while ($argi -lt $parms.length)
 
 if ($apikey.length -eq 0)
 {
-    "an API Key (-k) is a requred parameter"
+    "an API Key (-k) is a required parameter"
     exit
 }
 
