@@ -193,11 +193,11 @@ $StarlinkFolder="C:\users\$env:USERNAME\documents\StarlinkScripts"
 Setupfolder $starlinkfolder
 
 $env:Path ="$StarlinkFolder;$env:Path"
-DownloadFromRepo message.json
-DownloadFromRepo StarlinkStatusClient.ps1
-DownloadFromRepo StarlinkStatusstarter.exe
+DownloadFromRepo messages.json
+DownloadFromRepo Starlinkstatus_client.ps1
+DownloadFromRepo StarlinkStatusStarter.exe
 DownloadFromRepo ScheduleStarlinkStatus.exe
-DownloadfromRepo unscheduleStarlinkstatus.exe
+DownloadfromRepo UnscheduleStarlinkStatus.exe
 
 
 
