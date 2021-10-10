@@ -194,6 +194,14 @@ $StarlinkFolder="C:\users\$env:USERNAME\documents\StarlinkScripts"
 
 Setup-folder $starlinkfolder
 
+
+#make sure veryone has access
+
+$Acl = Get-ACL $tarlinkfolder
+$AccessRule= New-Object System.Security.AccessControl.FileSystemAccessRule("everyone","FullControl","ContainerInherit,Objectinherit","none","Allow")
+$Acl.AddAccessRule($AccessRule)
+Set-Acl $SharePath $Acl
+
 $env:Path ="$StarlinkFolder;$env:Path"
 DownloadFromRepo messages.json
 DownloadFromRepo Starlinkstatus_client.ps1
@@ -215,7 +223,7 @@ GetZippedExe  "https://install.speedtest.net/app/cli/ookla-speedtest-1.0.0-win64
 "testing speedtest..."
 $msg=$messages.speedtest
 ShowTextDialog $(invoke-expression "echo $msg") "" "" -bigtext $true -infoonly $true
-start-process  -filepath speedtest.exe -nonewwindow -wait
+start-process  -filepath speedtest.exe  -wait
 "retesting speedtest..."
 $isp=""
 while ($isp -ne "Starlink"){
