@@ -195,12 +195,12 @@ $StarlinkFolder="C:\users\$env:USERNAME\documents\StarlinkScripts"
 Setup-folder $starlinkfolder
 
 
-#make sure veryone has access
+#make sure everyone has access
 
-$Acl = Get-ACL $tarlinkfolder
+$Acl = Get-ACL $starlinkfolder
 $AccessRule= New-Object System.Security.AccessControl.FileSystemAccessRule("everyone","FullControl","ContainerInherit,Objectinherit","none","Allow")
 $Acl.AddAccessRule($AccessRule)
-Set-Acl $SharePath $Acl
+Set-Acl $starlinkfolder $Acl
 
 $env:Path ="$StarlinkFolder;$env:Path"
 DownloadFromRepo messages.json
