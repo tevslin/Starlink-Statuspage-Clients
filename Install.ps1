@@ -197,6 +197,7 @@ Setup-folder $starlinkfolder
 $env:Path ="$StarlinkFolder;$env:Path"
 DownloadFromRepo messages.json
 DownloadFromRepo Starlinkstatus_client.ps1
+DownloadFromRepo stalinkstatusstarter.ps1
 #DownloadFromRepo starlinkstatusstarter.exe
 #DownloadFromRepo schedulestarlinkstatus.exe
 #DownloadfromRepo unschedulestarlinkstatus.exe
@@ -214,8 +215,8 @@ GetZippedExe  "https://install.speedtest.net/app/cli/ookla-speedtest-1.0.0-win64
 "testing speedtest..."
 $msg=$messages.speedtest
 ShowTextDialog $(invoke-expression "echo $msg") "" "" -bigtext $true -infoonly $true
+start-process  -filepath speedtest.exe -nonewwindow -wait
 "retesting speedtest..."
-speedtest.exe
 $isp=""
 while ($isp -ne "Starlink"){
     $sd=$(speedtest.exe -f json|convertfrom-json)
