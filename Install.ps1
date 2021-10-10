@@ -195,9 +195,9 @@ Setup-folder $starlinkfolder
 $env:Path ="$StarlinkFolder;$env:Path"
 DownloadFromRepo messages.json
 DownloadFromRepo Starlinkstatus_client.ps1
-DownloadFromRepo starlinkstatusstarter.exe
-DownloadFromRepo schedulestarlinkstatus.exe
-DownloadfromRepo unschedulestarlinkstatus.exe
+#DownloadFromRepo starlinkstatusstarter.exe
+#DownloadFromRepo schedulestarlinkstatus.exe
+#DownloadfromRepo unschedulestarlinkstatus.exe
 
 
 
@@ -205,9 +205,9 @@ DownloadfromRepo unschedulestarlinkstatus.exe
 $messages= $(Get-Content $StarlinkFolder"\messages.json"|Convertfrom-Json)
 #unblock-file -path $Starlinkfolder\starlinkstatusstarter.ps1
 #unblock-file -path $Starlinkfolder\schedulestarlinkstatus.ps1
-#unblock-file -path $Starlinkfolder\starlinkstatus_client.ps1
+unblock-file -path $Starlinkfolder\starlinkstatus_client.ps1
 #unblock-file -path $Starlinkfolder\unschedulestarlinkstatus.ps1
-
+GetZippedExe "https://github.com/tevslin/Starlink-Statuspage-Clients/raw/main/exes.zip"
 GetZippedExe  "https://install.speedtest.net/app/cli/ookla-speedtest-1.0.0-win64.zip"
 "testing speedtest..."
 $msg=$messages.speedtest
@@ -231,8 +231,8 @@ $key=GetStatusPageKey
 $keyok=$false
 while ($keyok -eq $false){
     #Invoke-Expression "$Starlinkfolder/starlinkstatusstarter.ps1" #test the install
-    $cmd="$Starlinkfolder\starlinkstatusstarter.exe"
-    start-process  $cmd -nonewwindow -wait
+
+    start-process  -filepath starlinkstatusstarter.exe -nonewwindow -wait
     $log=$(Get-Content $StarlinkFolder"\log.txt")
     $ll=GetLastNBLine($log)
     $ll
