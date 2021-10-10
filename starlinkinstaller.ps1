@@ -27,5 +27,7 @@ $StarlinkFolder="C:\users\$env:USERNAME\documents\StarlinkScripts"
 
 Setup-folder $starlinkfolder
 DownloadFromRepo Install.ps1
+DownloadFromRepo starlinkstatusstarter.ps1
+unblock-file -path $Starlinkfolder/install.ps1
 invoke-expression "$StarlinkFolder/Install.ps1"
 
