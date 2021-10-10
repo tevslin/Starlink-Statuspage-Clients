@@ -197,7 +197,7 @@ Setup-folder $starlinkfolder
 $env:Path ="$StarlinkFolder;$env:Path"
 DownloadFromRepo messages.json
 DownloadFromRepo Starlinkstatus_client.ps1
-DownloadFromRepo stalinkstatusstarter.ps1
+DownloadFromRepo starlinkstatusstarter.ps1
 #DownloadFromRepo starlinkstatusstarter.exe
 #DownloadFromRepo schedulestarlinkstatus.exe
 #DownloadfromRepo unschedulestarlinkstatus.exe
