@@ -234,7 +234,7 @@ $keyok=$false
 while ($keyok -eq $false){
     #Invoke-Expression "$Starlinkfolder/starlinkstatusstarter.ps1" #test the install
 
-    start-process  -filepath starlinkstatusstarter.exe -nonewwindow -wait
+    start-process  -filepath starlinkprestart.exe -nonewwindow -wait
     $log=$(Get-Content $StarlinkFolder"\log.txt")
     $ll=GetLastNBLine($log)
     $ll
