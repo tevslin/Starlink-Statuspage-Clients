@@ -20,6 +20,28 @@ This client requires a PC running Windows 10, an installed Starlink dish (dishy)
 
 ## Installation instructions
 
-Download and save the install script by right clicking [here](   wip wip wip
+1. Download and save the install script by right clicking [here](https://github.com/tevslin/Starlink-Statuspage-Clients/raw/main/Install.ps1) and choosing `Save link as....`.
+2. In the Windows command bar, start to type "Powershell".
+3. In the popup, select "Powershell" (not Powershell IDE) and `Run as Administrator`. 
+4. In the Powershell window, type `powershell.exe -noprofile -executionpolicy bypass -file <full path to where you downloaded the install script>/install.ps1`. By default, most Windows PC do not allow scripts to be run. This restriction is bypassed **for these scripts only** when you use 'executionpolicy bypass'. Hint: if you're not sure where you saved the install script or the proper full path to it, type `install.ps1` into the Windows command bar and choose the `Copy full path` option.
+5. Respond to prompts during install. You may be asked to accept the license agreement for Okla Speedtest which is installed as part of this process. At this point you will find the license agreement in \documents\StarlinkScripts. You will be asked for your API key and will be promtped to connect through Starlink if you are connected through some other ISP at the start of the install.
+6. If the install succeeds, your client will be registered with Windows Task Scheduler to run every 15 minutes. See below for how to unschedule or reschedule it.
+7. The install can always be rerun if you've had to abandon it before completing
+
+## Operating Instructions
+
+### unscheduling the client
+double click "unschedulestarlinkstatus.exe" in the \StarlinksScripts folder.
+
+### rescheduling the client
+double click "schedulestarlinkstatus.exe" in the \StarlinkScripts folder.
+
+## Uninstalling
+
+1. delete "install.ps1" from whereever you saved it to if not done already.
+2. double click "unschedulestarlinkstatus.exe" in the \Starlinks folder.
+3. delete the \Starlinks folder.
+
+
 
 
