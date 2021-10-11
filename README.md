@@ -18,7 +18,7 @@ Neither Starlink Statuspage nor I have any official connection with Starlink nor
 
 This client requires a PC running Windows 10, an installed Starlink dish (dishy), and an API key from Starlink. The API Key is free, see the instructions under [Register and Account]( https://github.com/Tysonpower/starlinkstatus) for registering. You will be asked for the API key during installation of this client.
 
-## Installation instructions
+## Installation Instructions
 
 1. Download and save the install script by right clicking [here](https://github.com/tevslin/Starlink-Statuspage-Clients/raw/main/Install.ps1) and choosing `Save link as....`.
 2. In the Windows command bar, start to type "Powershell".
@@ -41,6 +41,8 @@ double click "schedulestarlinkstatus.exe" in the \StarlinkScripts folder.
 1. delete "install.ps1" from whereever you saved it to if not done already.
 2. double click "unschedulestarlinkstatus.exe" in the \Starlinks folder.
 3. delete the \Starlinks folder.
+
+## Trouble Reporting
 
 
 
