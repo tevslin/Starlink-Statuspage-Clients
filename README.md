@@ -2,7 +2,7 @@ WARNING   WARNING WARNING This is alpha software, tested on very few machines an
 
 # Starlink-Statuspage-Client
 
-Almosty self-installing Windows client to upload Starlink performance data to [Starlink Statuspage](https://Starlinkstatus.space).
+Almost self-installing Windows client to upload Starlink performance data to [Starlink Statuspage](https://Starlinkstatus.space).
 
 The developers of Starlink Statuspage, \Tysonpower and \puchol, describe it this way:
 
@@ -18,11 +18,13 @@ Neither Starlink Statuspage nor I have any official connection with Starlink nor
 
 This client requires a PC running Windows 10, an installed Starlink dish (dishy), and an API key from Starlink. The API Key is free, see the instructions under [Register and Account]( https://github.com/Tysonpower/starlinkstatus) for registering. You will be asked for the API key during installation of this client.
 
+You must either be using the Starlink router or set up port-forwarding in your own router such that 
+
 ## Installation Instructions
 
 1. Download and save the install script by right clicking [here](https://github.com/tevslin/Starlink-Statuspage-Clients/raw/main/Install.ps1) and choosing `Save link as....`.
 2. In the Windows command bar, start to type "Powershell".
-3. In the popup, select "Powershell" (not Powershell IDE) and `Run as Administrator`. 
+3. In the popup, select "Powershell" (not Powershell IDE) and `Run as Administrator`. You must have administrative privileges on the machine you are using.
 4. In the Powershell window, type `powershell.exe -noprofile -executionpolicy bypass -file <full path to where you downloaded the install script>/install.ps1`. By default, most Windows PC do not allow scripts to be run. This restriction is bypassed **for these scripts only** when you use 'executionpolicy bypass'. Hint: if you're not sure where you saved the install script or the proper full path to it, type `install.ps1` into the Windows command bar and choose the `Copy full path` option.
 5. Respond to prompts during install. You may be asked to accept the license agreement for Okla Speedtest which is installed as part of this process. At this point you will find the license agreement in \documents\StarlinkScripts. You will be asked for your API key and will be promtped to connect through Starlink if you are connected through some other ISP at the start of the install.
 6. If the install succeeds, your client will be registered with Windows Task Scheduler to run every 15 minutes. See below for how to unschedule or reschedule it.
@@ -39,10 +41,27 @@ double click "schedulestarlinkstatus.exe" in the \StarlinkScripts folder.
 ## Uninstalling
 
 1. delete "install.ps1" from whereever you saved it to if not done already.
-2. double click "unschedulestarlinkstatus.exe" in the \Starlinks folder.
+2. double click "unschedulestarlinkstatus.exe" in the \StarlinkScripts folder.
 3. delete the \Starlinks folder.
 
 ## Trouble Reporting
+
+Please click issues in the menu bar of this repository and be as specific as possible about how to reproduce. Screenshots appreciated
+
+## What Install.ps1 does
+
+1. Builds a folder called \Starlink scripts in your \documents folder.
+2. Downloads needed scripts and exes from this repository to the folder.
+3. Downloads the Windows CLI for Ookla's speedtest to the folder.
+4. Tests the CLI and gives you a chance to accept Ookla license terms.
+5. Determines from speedtest whether you are actually connected throuh Starlink and gives you a chance to change your connection if not.
+6. Downloads grpcurl to the folder for communicating with dishy.
+7. Requests and saves your API key (unencrypted).
+8. Runs the client to test end to end including the API key you provided.
+9. Gives you a chance to correct the API key if you typed it in wrong.
+10. Schedules the client with Windows Task Scheduler.
+
+
 
 
 
