@@ -18,7 +18,7 @@ Neither Starlink Statuspage nor I have any official connection with Starlink nor
 
 This client requires a PC running Windows 10, an installed Starlink dish (dishy), and an API key from Starlink. The API Key is free, see the instructions under [Register and Account]( https://github.com/Tysonpower/starlinkstatus) for registering. You will be asked for the API key during installation of this client.
 
-You must either be using the Starlink router or set up port-forwarding in your own router such that 
+You must either be using the Starlink router or set up port-forwarding in your own router such that requests to 192.168.100.1:9200 are port-forwarded to the Starlink modem.
 
 ## Installation Instructions
 
