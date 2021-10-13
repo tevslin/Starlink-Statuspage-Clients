@@ -36,7 +36,7 @@ You must either be using the Starlink router or set up port-forwarding in your o
 double click "unschedulestarlinkstatus.exe" in the \StarlinksScripts folder.
 
 ### rescheduling the client
-double click "schedulestarlinkstatus.exe" in the \StarlinkScripts folder.
+left click "schedulestarlinkstatus.exe" in the \StarlinkScripts folder and run it `aAs Administrator'.
 
 ## Uninstalling
 
