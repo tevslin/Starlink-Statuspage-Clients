@@ -193,11 +193,11 @@ function GetLastNBLine{
 Add-Type -AssemblyName System.Windows.Forms #get required builtins for dialog boxez
 Add-Type -AssemblyName System.Drawing
 $StarlinkFolder="C:\users\$env:USERNAME\documents\StarlinkScripts"
-$messages= $(Get-Content $StarlinkFolder"\messages.json"|Convertfrom-Json)
+
 
 $IsAdmin=[Security.Principal.WindowsIdentity]::GetCurrent()
 If ((New-Object Security.Principal.WindowsPrincipal $IsAdmin).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator) -eq $FALSE){
-    ShowTextDialog $messages.notadmin "" "" -bigtext $true -infoonly $true
+    Read-Host -prompt "You must run Powershell As Administrator to execute Install. Press enter to continue."
     exit    
 }
 Setup-folder $starlinkfolder
@@ -215,7 +215,7 @@ DownloadFromRepo messages.json
 DownloadFromRepo Starlinkstatus_client.ps1
 DownloadFromRepo starlinkstatusstarter.ps1
 
-
+$messages= $(Get-Content $StarlinkFolder"\messages.json"|Convertfrom-Json)
 unblock-file -path $Starlinkfolder\starlinkstatus_client.ps1
 #unblock-file -path $Starlinkfolder\unschedulestarlinkstatus.ps1
 GetZippedExe "https://github.com/tevslin/Starlink-Statuspage-Clients/raw/main/exes.zip"
