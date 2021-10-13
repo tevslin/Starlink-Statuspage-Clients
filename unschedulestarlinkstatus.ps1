@@ -1,2 +1,2 @@
 ﻿schtasks /delete /tn starlinkstatus /f
-Read-Host -prompt "Your Starlink Staus client has been unscheduled and will not run again until you execute schedulestarlinkstatus,exe in this folder As Administrator. Press enter to continue."
+Read-Host -prompt "Your Starlink Staus client has been unscheduled and will not run again until you execute schedulestarlinkstatus.exe in this folder As Administrator. Press enter to continue."
