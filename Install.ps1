@@ -144,8 +144,10 @@ function ShowTextDialog{
 function GetStatusPageKey{
     $keyfile=$Starlinkfolder+"\TheKey.txt"
     $key=""
-    try {$key=Get-Content $keyfile -Erroraction Stop;"API key found: $key"}
-    catch{
+    if ($(test-path $keyfile) -eq $true){ #*if there is a key file
+        $key=Get-Content $keyfile -Erroraction Stop;
+        "API key found: $key"}
+    else{
         while ($key.length -eq 0){
             $key=ShowTextDialog "Please enter your Starlink Statuspage API key" "API Key" "I don't have an API Key yet" 
             if ($key -eq '~~'){
@@ -191,7 +193,13 @@ function GetLastNBLine{
 Add-Type -AssemblyName System.Windows.Forms #get required builtins for dialog boxez
 Add-Type -AssemblyName System.Drawing
 $StarlinkFolder="C:\users\$env:USERNAME\documents\StarlinkScripts"
+$messages= $(Get-Content $StarlinkFolder"\messages.json"|Convertfrom-Json)
 
+$IsAdmin=[Security.Principal.WindowsIdentity]::GetCurrent()
+If ((New-Object Security.Principal.WindowsPrincipal $IsAdmin).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator) -eq $FALSE){
+    ShowTextDialog $messages.notadmin "" "" -bigtext $true -infoonly $true
+    exit    
+}
 Setup-folder $starlinkfolder
 
 
@@ -206,16 +214,8 @@ $env:Path ="$StarlinkFolder;$env:Path"
 DownloadFromRepo messages.json
 DownloadFromRepo Starlinkstatus_client.ps1
 DownloadFromRepo starlinkstatusstarter.ps1
-#DownloadFromRepo starlinkstatusstarter.exe
-#DownloadFromRepo schedulestarlinkstatus.exe
-#DownloadfromRepo unschedulestarlinkstatus.exe
 
 
-
-#DownLoadFilesFromRepo "Tevslin" "Starlink-Statuspage-Clients" "" $StarlinkFolder
-$messages= $(Get-Content $StarlinkFolder"\messages.json"|Convertfrom-Json)
-#unblock-file -path $Starlinkfolder\starlinkstatusstarter.ps1
-#unblock-file -path $Starlinkfolder\schedulestarlinkstatus.ps1
 unblock-file -path $Starlinkfolder\starlinkstatus_client.ps1
 #unblock-file -path $Starlinkfolder\unschedulestarlinkstatus.ps1
 GetZippedExe "https://github.com/tevslin/Starlink-Statuspage-Clients/raw/main/exes.zip"
