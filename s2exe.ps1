@@ -13,7 +13,7 @@ $dateB= (Get-Item $f2).LastWriteTime
 
 if ($dateA -ge $dateB) {
   invoke-expression "invoke-ps2exe -inputfile '$f1' -outputfile '$f2'"
-  out-host -inputobject $filen " compiled."
+  out-host -inputobject "$filen compiled."
   return $true
   }
 else {
