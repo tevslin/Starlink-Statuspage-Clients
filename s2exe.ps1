@@ -1,8 +1,31 @@
-﻿$gitFolder="C:\users\$env:USERNAME\documents\github\starlink-statuspage-clients"
+﻿function CompileIfChanged{
+    param(
+    [string]$filen
+    )
 
-invoke-ps2exe $gitfolder\unschedulestarlinkstatus.ps1 $gitfolder\UnscheduleStarlinkStatus.exe
-invoke-ps2exe $gitfolder\schedulestarlinkstatus.ps1 $gitfolder\ScheduleStarlinkStatus.exe
-invoke-ps2exe $gitfolder\starlinkprestart.ps1 $gitfolder\starlinkprestart.exe -noconsole
-#invoke-ps2exe $gitfolder\install.ps1 $gitfolder\install.exe
-invoke-ps2exe $gitfolder\starlinkinstaller.ps1 $gitfolder\StarlinkInstaller.exe
-compress-archive -path $gitFolder\*starlink*.exe -DestinationPath $gitFolder\exes.zip -Force
+$f1=$gitfolder+"\"+$filen+".ps1"
+
+$f2=$gitfolder+"\"+$filen+".exe"
+
+$dateA =(Get-Item $f1).LastWriteTime
+$dateB= (Get-Item $f2).LastWriteTime
+
+
+if ($dateA -ge $dateB) {
+  invoke-expression "invoke-ps2exe -inputfile '$f1' -outputfile '$f2'"
+  out-host -inputobject $filen " compiled."
+  return $true
+  }
+else {
+  return $false
+  }
+
+}
+$cexe=$false #asume not compressing exe
+$gitFolder="C:\users\$env:USERNAME\documents\github\starlink-statuspage-clients"
+
+$cexe=$cexe -or $(CompileIfChanged("schedulestarlinkstatus"))
+$cexe=$cexe -or $(CompileIfChanged("unschedulestarlinkstatus"))
+$cexe=$cexe -or $(CompileIfChanged("starlinkprestart"))
+if ($cexe){compress-archive -path $gitFolder\*starlink*.exe -DestinationPath $gitFolder\exes.zip -Force} #compress if any changed
+
